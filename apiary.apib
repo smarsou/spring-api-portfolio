@@ -1,0 +1,117 @@
+FORMAT: 1A
+HOST: http://smarsou.fr/
+
+# Portfolio API
+
+This API is a custom API written for the purpose of my job research.
+
+It manages CRUD operations on the database for my portfolio web application.
+
+<!--## Topic Collection [/topic]
+
+### List all topics [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "_id": 127,
+                "_topic":1,
+                "_html": "<h1> JavaFX project </h1> <div> This projects was ... </div>",
+            },
+            {
+                "_id": "128",
+                "_topic":2,
+                "_html": "<h1> Flask project </h1> <div> This projects was ... </div>",
+            }
+        ]-->
+
+## Project Collection [/project]
+
+This collection gathers all the projects I want to display on my portfolio web app.
+
+### List all projects [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "_id": 127,
+                "topic":"Development",
+                "html": "<h1> JavaFX project </h1> <div> This projects was ... </div>",
+            },
+            {
+                "_id": "128",
+                "topic":"Development",
+                "html": "<h1> Flask project </h1> <div> This projects was ... </div>",
+            }
+        ]
+        
+### Get project [GET/project/{id}]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "_id": 127,
+                "topic":"Development",
+                "html": "<h1> JavaFX project </h1> <div> This projects was ... </div>",
+            }
+        ]
+
+### Create project [POST]
+
++ Request (application/json)
+
+        {
+            "topic": "Data & AI",
+            "html": "<h1> Generative AI project </h1> <div> This projects was ... </div>"
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "success": true,
+                "message": "The project was successfully added.",
+                "new_content": {
+                    "_id": 534,
+                    "topic": "Data & AI",
+                    "html": "<h1> Generative AI project </h1> <div> This projects was ... </div>"
+                }
+            }
+
+### Modify project [PUT/project/{id}]
+
++ Request (application/json)
+
+        {
+            "topic": "Data & AI",
+            "html": "<h1> Generative AI project </h1> <div> This projects was ... </div>"
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "success": true,
+                "message": "The project was successfully modified.",
+                "new_content": {
+                    "id":127,
+                    "topic": "Data & AI",
+                    "html": "<h1> Generative AI project </h1> <div> This projects was ... </div>"
+                }
+            }
+            
+### Delete project [DELETE/project/{id}]
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "success": true,
+                "message": "The project was successfully deleted."
+            }
