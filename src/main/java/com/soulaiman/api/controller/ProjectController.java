@@ -3,6 +3,8 @@ package com.soulaiman.api.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.soulaiman.api.model.Project;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
@@ -32,11 +36,11 @@ public class ProjectController {
     }
 
     @PostMapping("/project")
-    public Project createProject(@RequestBody Project entity) {
+    public ResponseEntity<?> createProject(@RequestBody Project entity) {
         if (entity.getHtml() != null && entity.getTopic() != null){
-            return projectService.saveProject(entity);
+            return new ResponseEntity<>(projectService.saveProject(entity), HttpStatus.OK);
         }else{
-            return null;
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
