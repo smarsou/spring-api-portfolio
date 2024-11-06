@@ -2,9 +2,9 @@
 
 This microservice API supports my portfolio web application (see the corresponding repository for more details). It handles CRUD operations for the database, managing the projects displayed in my portfolio.
 
-The data managed includes each project's HTML content and related topic titles, which are used to organize projects by category on the portfolio. Topics allow users to view projects grouped by specific themes.
+The data managed includes each project's HTML content and related topic titles. Topics allow users to view projects grouped by specific themes.
 
-The REST API communicate for now with a H2 in memory database. 
+The REST API communicate for now with an H2 in memory database. 
 
 ## Roadmap
 
@@ -22,3 +22,22 @@ To resume, the endpoints of the API are :
 - **Create a project :** POST /project
 - **Modify a project :** PUT /project/{id}
 - **Delete a project :** DELETE /project/{id}
+
+## Tests
+
+### Unit tests
+
+Unit tests are implemented through the class ProjectControllerTests.
+The coverage is 33%. The goal is to get closer to 100%.
+
+### SonarCloud
+
+I use SonarCloud to follow the quality of my code. It teaches me a lot of best practices in web development.
+
+You can have a quick view of the current analysis of the repository below.
+
+<img src=".github/static/sonar.png" width="800"/>
+
+
+
+
