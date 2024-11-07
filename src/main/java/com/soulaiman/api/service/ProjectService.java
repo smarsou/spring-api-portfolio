@@ -18,16 +18,16 @@ public class ProjectService {
         return projectRepository.findAll();
     }
 
-    public Optional<Project> getProject(final Long _id){
-        return projectRepository.findById(_id);
+    public Optional<Project> getProject(final Long id){
+        return projectRepository.findById(id);
     }
 
     public Project saveProject(final Project project){
         return projectRepository.save(project);
     }
 
-    public void deleteProject(final long _id){
-        projectRepository.deleteById(_id);
+    public void deleteProject(final long id){
+        projectRepository.deleteById(id);
     }
 
 }

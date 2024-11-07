@@ -21,34 +21,34 @@ import com.soulaiman.api.model.Project;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ProjectControllerTests {
+class ProjectControllerTests {
     
     @Autowired
-    public MockMvc mockMvc;
+    MockMvc mockMvc;
 
     @Test
-    public void testGetProjectsStatus() throws Exception{
+    void testGetProjectsStatus() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.get("/project"))
         .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
     @ParameterizedTest
     @CsvSource({ "0,Software Development" , "5,Data &amp; AI"})
-    public void testGetProjectsValues(String index, String topic) throws Exception{
+    void testGetProjectsValues(String index, String topic) throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.get("/project"))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.jsonPath("$["+index+"].topic", CoreMatchers.is(topic)));
     }
 
     @Test
-    public void testGetProjectSuccess() throws Exception{
+    void testGetProjectSuccess() throws Exception{
         // Modify an unkown project
         mockMvc.perform(MockMvcRequestBuilders.get("/project/1"))
         .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
     @Test
-    public void testPostProjectSuccess() throws Exception{
+    void testPostProjectSuccess() throws Exception{
         String jsonContent = "{ \"topic\" : \"Software Development\", \"html\":\"<p>Test</p>\"}";
         mockMvc.perform(MockMvcRequestBuilders.post("/project").contentType("application/json").content(jsonContent))
         .andExpect(MockMvcResultMatchers.status().isOk());
@@ -58,7 +58,7 @@ public class ProjectControllerTests {
     @ParameterizedTest
     @CsvSource({ "{ \"topic\" : \"Software Development\", \"content\": \"Should fail because content field doesn t exist\"}"
                 , "{ \"topic\" : \"Software Development\"}"})
-    public void testPostProjectFail(String jsonContent) throws Exception{
+    void testPostProjectFail(String jsonContent) throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.post("/project").contentType("application/json").content(jsonContent))
         .andExpect(MockMvcResultMatchers.status().isBadRequest());
         
@@ -66,7 +66,7 @@ public class ProjectControllerTests {
 
     @ParameterizedTest
     @CsvSource({ "topic, Topic modified !,{ \"topic\" : \"Topic modified !\"}", "html, <p>Html modified !</p>,{ \"html\" : \"<p>Html modified !</p>\"}"})
-    public void testPutProjectSuccess(String field, String expectedModification, String modifyContent) throws Exception{
+    void testPutProjectSuccess(String field, String expectedModification, String modifyContent) throws Exception{
         // Add a project first
         String jsonContent = "{ \"topic\" : \"Software Development\", \"html\":\"<p>Test</p>\"}";
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/project").contentType("application/json").content(jsonContent))
@@ -75,7 +75,7 @@ public class ProjectControllerTests {
         String body = result.getResponse().getContentAsString();
         Project project = (new ObjectMapper()).readValue(body, Project.class);
         // Modify the project
-        String resultModified = mockMvc.perform(MockMvcRequestBuilders.put("/project/" + project.get_id().toString()).contentType("application/json").content(modifyContent))
+        String resultModified = mockMvc.perform(MockMvcRequestBuilders.put("/project/" + project.getId().toString()).contentType("application/json").content(modifyContent))
         .andExpect(MockMvcResultMatchers.status().isAccepted())
         .andReturn().getResponse().getContentAsString();
         Project projectModified = (new ObjectMapper()).readValue(resultModified, Project.class);
@@ -94,7 +94,7 @@ public class ProjectControllerTests {
     }
 
     @Test
-    public void testPutProjectFail() throws Exception{
+    void testPutProjectFail() throws Exception{
         // Modify an unkown project
         String modifyContent = "{\"html\":\"<p>Modified Html !</p>\"}";
         mockMvc.perform(MockMvcRequestBuilders.put("/project/999").contentType("application/json").content(modifyContent))
@@ -103,7 +103,7 @@ public class ProjectControllerTests {
     }
 
     @Test
-    public void testDeleteProjectSuccess() throws Exception{
+    void testDeleteProjectSuccess() throws Exception{
         // Add a project first
         String jsonContent = "{ \"topic\" : \"Software Development\", \"html\":\"<p>Test</p>\"}";
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/project").contentType("application/json").content(jsonContent))
@@ -112,10 +112,10 @@ public class ProjectControllerTests {
         String body = result.getResponse().getContentAsString();
         Project project = (new ObjectMapper()).readValue(body, Project.class);
         // Delete the project
-        mockMvc.perform(MockMvcRequestBuilders.delete("/project/" + project.get_id().toString()))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/project/" + project.getId().toString()))
         .andExpect(MockMvcResultMatchers.status().isOk());
         // Test if the project still exist
-        mockMvc.perform(MockMvcRequestBuilders.get("/project/" + project.get_id().toString()))
+        mockMvc.perform(MockMvcRequestBuilders.get("/project/" + project.getId().toString()))
         .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 
