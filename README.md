@@ -28,7 +28,9 @@ To resume, the endpoints of the API are :
 ### Unit tests
 
 Unit tests are implemented through the class ProjectControllerTests.
-The coverage is 33%. The goal is to get closer to 100%.
+The coverage is 93%.
+
+<img src=".github/static/coverage.png" width="300"/>
 
 ### SonarCloud
 
