@@ -12,7 +12,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: portfolio
+    runs-on: portfolio-api
     steps:
     - name: Clean the repo
       run: rm -rf spring-api-portfolio/
