@@ -12,7 +12,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: portfolio-api
+    runs-on: self-hosted
     steps:
     - name: Clean the repo
       run: rm -rf spring-api-portfolio/
