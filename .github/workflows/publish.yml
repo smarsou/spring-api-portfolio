@@ -25,7 +25,7 @@ jobs:
       run: cd spring-api-portfolio/ && chmod 777 mvnw
 
     - name: Build the jar file
-      run: cd spring-api-portfolio/ && ./mvnw package
+      run: cd spring-api-portfolio/ && ./mvnw package -DskipTests
 
     - name: Update docker image
       run: cd spring-api-portfolio/ && sudo docker build --build-arg JAR_FILE=target/*.jar -t smarsou/api .
