@@ -4,7 +4,7 @@ This microservice API supports my portfolio web application (see the correspondi
 
 The data managed includes each project's HTML content and related topic titles. Topics allow users to view projects grouped by specific themes.
 
-The REST API communicate for now with an H2 in memory database. 
+The REST API communicate for now with an H2 persistente file database. 
 
 ## Roadmap
 
