@@ -1,26 +1,132 @@
 DROP TABLE IF EXISTS projects;
 
 CREATE TABLE projects (
-  _id INT AUTO_INCREMENT PRIMARY KEY,
+  _id SERIAL PRIMARY KEY,
   topic VARCHAR(250) NOT NULL,
-  html VARCHAR(MAX) NOT NULL
+  html CLOB NOT NULL
 );
 
-INSERT INTO projects (topic, html) VALUES
-('Software Development', '&lt;p class=&quot;subsubtitle&quot;&gt;Spring Boot Web Portfolio&lt;/p&gt;&lt;p&gt;A Java web application with Spring Boot to manage and render my portfolio. It includes : &lt;ul&gt;&lt;li&gt;Retrieve projects&#39; data from a custom microservice API (&lt;a href=&quot;https://github.com/smarsou/spring-api-portfolio&quot; target=&quot;_blank&quot;&gt;https://github.com/smarsou/spring-api-portfolio&lt;/a&gt;).&lt;/li&gt;&lt;li&gt;Display a home page, with my CV and my projects&lt;/li&gt;&lt;li&gt;Manage projects data through an admin panel&lt;/li&gt;&lt;/ul&gt;It communicates with the API to manage the data which I want to display on my portfolio.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Tech stack&lt;/strong&gt;: Java, Spring Boot, Maven, Azure VM, Linux, GitHub CI/CD, REST API, Nginx&lt;/p&gt;&lt;a style=&quot;&quot; target=&quot;_blank&quot; href=&quot;https://github.com/smarsou/spring-web-portfolio&quot;&gt;Github repo...&lt;/a&gt;'),
+-- INSERT INTO projects (topic, html) VALUES
 
-('Software Development', '&lt;p class=&quot;subsubtitle&quot;&gt;Microservice API for the Portfolio&lt;/p&gt;&lt;p&gt;A microservice API implemented with Spring Boot for my web app portfolio (&lt;a href=&quot;https://github.com/smarsou/spring-web-portfolio&quot; target=&quot;_blank&quot;&gt;https://github.com/smarsou/spring-web-portfolio&lt;/a&gt;).&lt;/p&gt;&lt;p&gt;It handles CRUD operations and is hosted on the same virtual machine as the Spring Boot web application.&lt;/p&gt;&lt;p&gt;I use Apiary for the online documentation: &lt;a href=&quot;https://smarsousportfolioapi.docs.apiary.io/&quot; target=&quot;_blank&quot;&gt;https://smarsousportfolioapi.docs.apiary.io/&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Tech stack&lt;/strong&gt;: Java, Spring Boot, REST API, Apiary&lt;/p&gt;'),
+-- ('Experiences', '<div class="project-image-wrapper"><img class="project-image" src="/public/pictures/anidris.png" alt="Project Image"></div>
+--                 <div class="portfolio-row">
+--                   <div class="layer">
+--                     <h5>CMDB & ETL Software Development</h5>
+--                     <p>
+--                       During my internship at <strong style="color:#00eeff">Anidris S.A.</strong> in <strong style="color:#00eeff">Contern, Luxembourg</strong>, I developed a comprehensive <strong style="color:#00eeff">Configuration Management Database (CMDB)</strong> and automated data processing systems. <br>
+--                       💻 Designed and implemented the CMDB as a <strong style="color:#00eeff">Tomcat application</strong> (CMDBuild) with a <strong style="color:#00eeff">PostgreSQL database</strong>, ensuring robust and scalable architecture. <br>
+--                       🔄 Developed a fully automated <strong style="color:#00eeff">ETL process</strong> using Python for multi-source data acquisition, transformation, and integration. <br>
+--                       🌐 Integrated external APIs, including the <strong style="color:#00eeff">Microsoft Graph API</strong>, and internal <strong style="color:#00eeff">REST APIs</strong> in the Python software implemented. <br>
+--                       🧩 Managed a <strong style="color:#00eeff">Red Hat Enterprise Linux</strong> environment and configured <strong style="color:#00eeff">CI/CD pipelines</strong> using GitLab, ensuring efficient deployment workflows. <br>
+--                       📚 Authored user documentation, trained employees on tool usage, and provided ongoing technical support for seamless adoption. <br>
+--                       🛠️ Technologies: <strong style="color:#00eeff">Python</strong>, <strong style="color:#00eeff">PostgreSQL</strong>, <strong style="color:#00eeff">Tomcat</strong>, <strong style="color:#00eeff">MS Graph API</strong>, <strong style="color:#00eeff">Red Hat Enterprise Linux</strong>, and <strong style="color:#00eeff">GitLab CI/CD</strong>. <br>
+--                     </p>
+--                   </div>                  
+--                 </div>'),
 
-('Software Development', '&lt;p class=&quot;subsubtitle&quot;&gt;JavaFX project&lt;/p&gt;&lt;p&gt; It is an academic project in which we had to learn JavaFX and use it to implement a desktop app, within 5 days.&lt;/p&gt;&lt;p&gt; A UML diagram we have designed for the application is available in the github repository. &lt;/p&gt;&lt;p&gt;Below is a video of the result application. It was recorded for an exam evaluation during my master&apos;s degree. You can also find the github repo below. &lt;br&gt;&lt;br&gt; &lt;iframe width=&quot;460&quot; height=&quot;215&quot; src=&quot;https://www.youtube.com/embed/sAErV-kfg3c?si=zUM2Jr_tzyLPCu1r&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Tech stack&lt;/strong&gt;: Java, JavaFX, Gradle&lt;/p&gt;&lt;a style=&quot;&quot; target=&quot;_blank&quot; href=&quot;https://github.com/smarsou/javafx-app&quot;&gt;Github repo...&lt;/a&gt;'),
+-- ('Experiences', '<div class="project-image-wrapper"><img class="project-image" src="/public/pictures/sopra.png" alt="Project Image"></div>
+--                 <div class="portfolio-row">
+--                   <div class="layer">
+--                     <h5>LLM Research & Development</h5>
+--                     <p>
+--                       During my time at <strong style="color:#00eeff">Sopra Steria</strong> in <strong style="color:#00eeff">Strasbourg, France</strong>, I contributed to the research and development of <strong style="color:#00eeff">Large Language Models (LLMs)</strong> within the scope of the company, helping them explore and understand their potential applications. <br>
+--                       📚 Co-authored a detailed <strong style="color:#00eeff">state-of-the-art review</strong> on LLM enhancement techniques, including training, optimization, and evaluation methodologies. <br>
+--                       🧼 Conducted data collection, cleaning, and transformation to prepare a high-quality <strong style="color:#00eeff">text dataset</strong> for training and evaluation. <br>
+--                       🚀 Trained and optimized a <strong style="color:#00eeff">CodeLLaMa LLM</strong>, providing insights and conclusions based on the dataset and performance metrics. <br>
+--                       🛠️ Technologies: <strong style="color:#00eeff">Python</strong>, <strong style="color:#00eeff">HuggingFace</strong>, <strong style="color:#00eeff">Jupyter Notebook</strong>, <strong style="color:#00eeff">IBM Watson</strong>, and <strong style="color:#00eeff">LaTeX</strong>. <br>
+--                     </p>
+--                   </div>         
+--                 </div>'),
 
-('Software Development', '&lt;p class=&quot;subsubtitle&quot;&gt;Internship - Database Design &amp; Python ETL Development&lt;/p&gt;&lt;p&gt;My 6 long-term internship with Anidris S.A. (Luxembourg) was a project of CMDB implementation. The main points of this project are :&lt;ul&gt;&lt;li&gt;Designed a CMDB (Configuration Management Database) using a Tomcat app and its PostgreSQL DB.&lt;/li&gt;&lt;li&gt;ETL process implemented in Python to send data sources into the CMDB with automation.&lt;/li&gt;&lt;li&gt; Manipulated GRAPH API and internal REST API, OOP in Python and managed Linux environment.&lt;/li&gt;&lt;li&gt; Written user documentation and trained employees on the tool&#39;s usage&lt;/li&gt;&lt;/ul&gt;&lt;p&gt; &lt;strong&gt;Technologies:&lt;/strong&gt; Python, PostgreSQL, Tomcat, MS GRAPH API, Red Hat Entreprise Linux, Gitlab CI/CD.&lt;/p&gt;'),
+-- ('Projects', '<div class="project-image-wrapper"><img class="project-image" src="/public/pictures/ai-1.png" alt="Project Image"></div>
+--                 <div class="portfolio-row">
+--                     <div class="layer">
+--                       <h5>AI SaaS</h5>
+--                       <p>
+--                         I developed an AI SaaS platform that detects whether an English text was written by a human or a large language model (LLM). <br>
+--                         🤖 The AI model is a <strong style="color:#00eeff">Random Forest</strong> classifier, selected after performing a <strong style="color:#00eeff">GridSearch</strong> across various models. <br>
+--                         🔍 Explore the Exploratory Data Analysis (<strong style="color:#00eeff">EDA</strong>) and training process <a href="https://github.com/smarsou/ai-text-detector/blob/master/data/eda_and_training.ipynb" style="color:#00eeff" target="_blank">here</a>. <br>
+--                         🧼 The dataset underwent thorough analysis and <strong style="color:#00eeff">cleaning</strong> prior to training. <br>
+--                         📚 <strong style="color:#00eeff">FastText</strong> was used as the NLP method for data vectorization. <br>
+--                         🚀 The AI model is deployed via a <strong style="color:#00eeff">REST API</strong> built with <strong style="color:#00eeff">Flask</strong>. <br>
+--                         🌐 It is hosted on an <strong style="color:#00eeff">Ubuntu VM</strong> from <strong style="color:#00eeff">OVH Cloud</strong>, configured with <strong style="color:#00eeff">Nginx</strong> and <strong style="color:#00eeff">Docker</strong>. <br>
+--                         📨 The web page interacts with the <strong style="color:#00eeff">REST API</strong> using <strong style="color:#00eeff">AJAX requests</strong>. <br>
+--                       </p>                                                              
+--                       <div class="list-button">
+--                         <a href="http://smarsou.fr/lab/hackaton" target="_blank" rel="noopener noreferrer" class="btn-box">Try the app !</a>
+--                         <div class="home-Sci"><a href="http://github.com/smarsou/ai-text-detector" target="_blank" rel="noopener noreferrer" style="--i:10"><i class="bx bxl-github"></i></a></div>
+--                       </div>
+--                     </div>
+--                 </div>'),
 
-('Software Development', '&lt;p class=&quot;subsubtitle&quot;&gt;Compiler syntax and semantic analysis (Java)&lt;/p&gt;&lt;p&gt;This project involves implementing the syntax and semantic analysis phases of a compiler. The chosen language is Tiger. Code generation in assembly language is not part of this project.&lt;/p&gt;&lt;p&gt;The syntax analysis was carried out by establishing an LL grammar, which allowed us to construct the abstract syntax tree (AST).&lt;/p&gt;&lt;p&gt;Next, based on this abstract tree, we implemented semantic checks in Java using the Visitor design pattern.&lt;/p&gt;&lt;p&gt;This enabled us to build the symbol table in the end.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Tech stack &lt;/strong&gt;: Java, ANTLR&lt;/p&gt;&lt;a style=&quot;&quot; target=&quot;_blank&quot; href=&quot;https://github.com/smarsou/compiler-syntax-semantic-analysis&quot;&gt;Github repo...&lt;/a&gt;'),
+-- ('Projects', '<div class="project-image-wrapper"><img class="project-image" src="/public/pictures/portfolio-2.png" alt="Project Image"></div>
+--                 <div class="portfolio-row">
+--                     <div class="layer">
+--                         <h5>Portfolio Web Development</h5>
+--                         <p>
+--                           The current website on which you are is a web app developed in Java with the framework Spring Boot. <br>
+--                           ⚙️ Backend in <strong style="color:#00eeff">Java</strong> with <strong style="color:#00eeff">Spring Boot</strong>.<br>
+--                           🧪 <strong style="color:#00eeff">JUnit</strong> and <strong style="color:#00eeff">Mockito</strong> for unit and integration testing.<br>
+--                           ✨ <strong style="color:#00eeff">SonarCloud</strong> for code quality assurance.<br>
+--                           📦 Microservice <strong style="color:#00eeff">REST API</strong> for data management through a dedicated Spring Boot application.<br>
+--                           🐳 <strong style="color:#00eeff">Docker</strong> with <strong style="color:#00eeff">Docker Compose</strong> and <strong style="color:#00eeff">Systemd</strong> for deploying applications (Web app, API, Nginx).<br>
+--                           🌐 <strong style="color:#00eeff">Nginx</strong> used as a reverse proxy.<br>
+--                           🚀 Workflow with <strong style="color:#00eeff">GitHub Actions</strong> for managing the CI/CD pipeline.<br>
+--                         </p>                        
+--                         <div class="list-button">
+--                           <div class="home-Sci"><a href="http://github.com/smarsou/spring-web-portfolio" target="_blank" rel="noopener noreferrer" style="--i:10"><i class="bx bxl-github"></i></a></div>
+--                         </div>
+--                     </div>
+--                 </div>'),
 
-('Data &amp; AI', '&lt;p class=&quot;subsubtitle&quot;&gt;Generative AI &amp; LLM research project&lt;/p&gt;&lt;p&gt;Written a state-of-the-art research on LLMs about fine-tuning, optimization and comparison. Fine-tuned a model for code generation, optimized it using prompt engineering and quantization. Documented test results and provided conclusions to complete the research report.&lt;/p&gt;&lt;a style=&quot;&quot; target=&quot;_blank&quot; href=&quot;/pdf/pi.pdf&quot;&gt;Learn more...&lt;/a&gt;'),
+-- ('Projects', '<div class="project-image-wrapper"><img class="project-image" src="/public/pictures/eda.png" alt="Project Image"></div>
+--                 <div class="portfolio-row">
+--                   <div class="layer">
+--                     <h5>EDA for Tree Defect Analysis and Prediction</h5>
+--                     <p>
+--                       A project aimed at predicting tree defects and enhancing vegetation management through data analysis and machine learning. <br>
+--                       🧹 <strong style="color:#00eeff">Clean</strong> and <strong style="color:#00eeff">prepare</strong> data by handling missing values and removing redundant attributes. <br>
+--                       📊 Analyze data correlations using <strong style="color:#00eeff">Pearson correlation</strong>, <strong style="color:#00eeff">χ² tests</strong>, and <strong style="color:#00eeff">Cramer’s V</strong>. <br>
+--                       🤖 Build predictive models with <strong style="color:#00eeff">Random Forest</strong> for both unilabel and multilabel classification. <br>
+--                       ⚖️ Handle imbalanced data using <strong style="color:#00eeff">SMOTE</strong> and class weight adjustments for improved accuracy. <br>
+--                       🖼️ Visualize trends and patterns using <strong style="color:#00eeff">Matplotlib</strong>. <br>
+--                       💻 Developed in a collaborative environment using <strong style="color:#00eeff">Jupyter Notebook</strong> with Python.
+--                     </p>
+--                     <div class="list-button">
+--                       <a href="https://colab.research.google.com/drive/14Y4rP2lHipmAMgluWHemusxSByCuxLXn?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-box">Check the notebook !</a>
+--                       <div class="home-Sci"><a href="http://github.com/smarsou" target="_blank" rel="noopener noreferrer" style="--i:10; visibility: hidden;"><i class="bx bxl-github"></i></a></div>
+--                     </div>
+--                   </div>
+--               </div>'),
 
-('Data &amp; AI', '&lt;p class=&quot;subsubtitle&quot;&gt;AI text generated detector&lt;/p&gt;&lt;p&gt;Training different models with the goal of distinguishing between an essay written by a high school student and one generated by an AI. This project originates from the statement of a Kaggle competition.&lt;/p&gt;&lt;a style=&quot;&quot; target=&quot;_blank&quot; href=&quot;https://github.com/smarsou/ai-text-detector&quot;&gt;Github repo...&lt;/a&gt;'),
+-- ('Projects', '<div class="project-image-wrapper"><img class="project-image" src="/public/pictures/viz.png" alt="Project Image"></div>
+--                 <div class="portfolio-row">
+--                   <div class="layer">
+--                     <h5>Wildfire Data Visualization Mapping</h5>
+--                     <p>
+--                       A visualization project to enhance the evolution of forest fires in France over the years. <br>
+--                       🌐 Collect <strong style="color:#00eeff">CSV data</strong> from official government websites. <br>
+--                       🗺️ Find relevant <strong style="color:#00eeff">SVG maps</strong> of France. <br>
+--                       🧹 <strong style="color:#00eeff">Clean</strong> and <strong style="color:#00eeff">transform</strong> data to apply it to maps. <br>
+--                       💻 Create a simple and efficient <strong style="color:#00eeff">static website</strong> to display data. <br>
+--                       📊 Implement visualizations with <strong style="color:#00eeff">JavaScript</strong> using the <strong style="color:#00eeff">D3.js</strong> library.
+--                     </p>                    
+--                     <div class="list-button">
+--                       <a href="http://smarsou.fr/lab/viz/" target="_blank" rel="noopener noreferrer" class="btn-box">Have a look !</a>
+--                       <div class="home-Sci"><a href="http://github.com/smarsou" target="_blank" rel="noopener noreferrer" style="--i:10; visibility: hidden;"><i class="bx bxl-github"></i></a></div>
+--                     </div>
+--                   </div>
+--               </div>'),
 
-('Data &amp; AI', '&lt;p class=&quot;subsubtitle&quot;&gt;EDA: Analysis of Grenoble&apos;s Urban Vegetation&lt;/p&gt;&lt;p&gt;Exploratory Data Analysis of Grenoble&apos;s Urban Vegetation.&lt;/p&gt;&lt;a style=&quot;&quot; target=&quot;_blank&quot; href=&quot;https://colab.research.google.com/drive/13i1xwQEhz7C6L1DBw0atsRNq6nh4-aSz?usp=sharing&quot;&gt;Learn more...&lt;/a&gt;'),
-
-('Data &amp; AI', '&lt;p class=&quot;subsubtitle&quot;&gt;Data Visualization: Wildfires in France&lt;/p&gt;&lt;p&gt;Design of various visualizations to understand wildfire data in France since 1973.&lt;/p&gt;&lt;a style=&quot;&quot; target=&quot;_blank&quot; href=&quot;https://github.com/smarsou/data-visualization-forest-fires&quot;&gt;Github repo...&lt;/a&gt;');
+-- ('Projects', '<div class="project-image-wrapper"></div>
+--                 <div class="portfolio-row">
+--                   <div class="layer">
+--                     <h5>And Much More Coming Soon...</h5>
+--                     <p>Currently being worked on...<br>
+--                       Soon to be featured in this portfolio: Professional Experience, a ChatBot LLM project with HuggingFace integration, a C Compiler, C programming projects, and much more...  
+--                     </p>                          
+--                     <div class="list-button">
+--                       <div class="home-Sci"><a href="http://github.com/smarsou" target="_blank" rel="noopener noreferrer" style="--i:10"><i class="bx bxl-github"></i></a></div>
+--                     </div>
+--                   </div>
+--                 </div>')
