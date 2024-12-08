@@ -44,25 +44,13 @@ You can have a quick view of the current analysis of the repository below.
 
 This Spring Api Application is hosted on the same Ubuntu VM in which the app from spring-web-portfolio repo is deployed. See the repo for more details.
 
-For this API, I chose to deploy the jar output file in a docker container.
-You can check the **Dockerfile** for the configuration of the image.
+This api is deployed as a docker container.
+You can check the **Dockerfile** for details about the build.
 
 The CD pipeline, which you can find at *.github/workflows/publish.yml*, pulls the code, packages the jar file, and rebuilds the docker image in the private local registry of the VM.
 Then, the **watchtower** container of the VM, which is a listener on the images of the registry, updates automatically the container with the new image.
 
-Here is the *docker-compose.yml* file which is present in the VM.
-
-    services:
-        portfolio-api:
-            image: smarsou/api
-            container_name: portfolio-api
-            ports:
-            - 9001:9001
-        watchtower:
-            image: containrrr/watchtower
-            container_name: watchtower
-            volumes:
-            - /var/run/docker.sock:/var/run/docker.sock
+You can have more details of the deployment in the repository smarsou/spring-web-portfolio.
 
 
 
